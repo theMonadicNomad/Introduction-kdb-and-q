@@ -35,12 +35,26 @@ q)1.0 2.0 3.0
 
 
 ```haskell
-q)
-q)
-q)
-q)
-q)
-q)
+q)count 10 2.0 3.0
+3
+
+q)1+10 20 30 --Adding a single number (scalar) to all numbers in a list (Vector)
+11 21 31 
+
+q)10 20 30+1
+11 21 31
+
+q)0 1 2 3 4 5%2 --Divide every item in the list by 2
+0 0.5 1 1.5 2 2.5
+
+-- All operators have same precedence in Q
+--Everything is done from right to left (based on mathematics and the order in which composite functions are evaluated)
+
+q)2*3+4
+14
+
+q)til 3
+0 1 2
 q)
 q)
 q)
