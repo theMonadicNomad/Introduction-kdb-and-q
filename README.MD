@@ -280,19 +280,43 @@ q){x, sum -2#x}/[10;1 1] -- Iterate 10 times starting with 1 1
 
 q)deltas 10 20 30 40 50 -- REturns the successive differences across a numeric list
 10 10 10 10 10 
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
+
+q)deltas 110 120 130 140 150
+110 10 10 10 10
+
+q)deltas sums 110 120 130 140 150
+110 120 130 140 150 --Invariants
+
+q)sums deltas 110 120 130 140 150
+110 120 130 140 150 --Invariants
+
+--Assigning a variable
+q)a:42 --Assignment operator
+q)a
+42
+
+q)buys:2 1 4 3 5 4 
+
+q)sums buys
+2 3 7 10 15 19
+
+```
+
+## Chapter 10. Tables
+
+
+A collection of columns(operations on lists, vector operation) is a table in Q.
+
+```haskell
+q)dates:2018.01.01+10000?31 --Generate 10000 random numbers between 0 and 31 
+q) count dates
+10000
+
+q)times:10000?24:00:00.000 -- Generate 10000 random times between 00:00:00 till 24:00:00
+q)qtys: 100*1+10000?100
+
+q)ixs:10000?3 --Generate 10000 random numbers between 0-2
+q)syms: `aapl` 
 q)
 q)
 q)
