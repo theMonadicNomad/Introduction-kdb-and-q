@@ -1,5 +1,7 @@
 # Introduction to kdb+ and q
 
+Here you will find a brief summary of introduction to kdb+ and q, based on the offical lectures of Jeffry Borror, Author of [Q for Mortals](https://code.kx.com/q4m3/). You can find the official tutorial [here](https://code.kx.com/q/learn/q-for-all/).
+
 ## 1&2. Intro & Consoles, Data Types, Lists
 
 ```haskell
