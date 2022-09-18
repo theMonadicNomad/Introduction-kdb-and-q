@@ -2,7 +2,7 @@
 
 Here you will find a brief summary of introduction to kdb+ and q, based on the offical lectures of Jeffry Borror, Author of [Q for Mortals](https://code.kx.com/q4m3/). You can find the official tutorial [here](https://code.kx.com/q/learn/q-for-all/).
 
-## 1&2. Intro & Consoles, Data Types, Lists
+## Chapter 1&2. Intro & Consoles, Data Types, Lists
 
 ```haskell
 q)52 
@@ -33,7 +33,7 @@ q)1.0 2.0 3.0
 
 ```
 
-## 3. Operators & Operators precedence
+## Chapter 3. Operators & Operators precedence
 
 
 ```haskell
@@ -72,7 +72,7 @@ q)1+2*til 10 -- Generates a list of first 10 odd integers.
 ```
 
 
-## 4.Booleans and Temporal Types
+## Chapter 4. Booleans and Temporal Types
 
 ```haskell
 
@@ -136,7 +136,7 @@ q)2000.01.01=2000.01m
 
 ```
 
-## 5.Casting and Date Operators
+## Chapter 5. Casting and Date Operators
 
 
 --Casting: Convert a value of one type to another type
@@ -158,7 +158,7 @@ q)2000.01m+til 3
 
 ```
 
-## 6.Operations on Lists
+## Chapter 6. Operations on Lists
 
 ```haskell
 
@@ -221,20 +221,65 @@ q)sums 10 20 30 40 50 --Running sum
 q)mins 10 20 30 40 50 --Running minimum
 10 10 10 10 10
 
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
+q)maxs --Running maximum
+
+```
+
+## Chapter 7. Functions
+
+```haskell
+
+q){[x]x*x}5 --Squaring Function
+25
+
+q){[x]x*x}[4]
+16
+
+q){x*x}5
+25
+```
+
+
+## Chapter 8. Newton Raphson & Fibonacci
+
+```haskell
+q){[xn] xn +(2-xn*xn)%2*xn}/[1.0]
+1.414214
+
+q){[xn] xn +(2-xn*xn)%2*xn}`\[1.0]
+1 1.5 1.416667 1.414216 1.414214 
+
+q)2#10 20 30 40 50 --Retrieve the first 'n' numbers of the list
+10 20 
+
+q)-2# 10 20 30 40 50 -- Retrieve the last 'n' numbers of the list.
+40 50 
+
+q)10 20 , 100 200 300 --Join the lists
+10 20 100 200 300
+
+q){-2#x} 1 1 -- Take the last 2 arguments of the list
+1 1
+
+q){sum -2#x} 1 1
+2
+
+q){x, sum -2#x} 1 1 --Take the last 2 elements, sum them and concatenate to the back of the list
+1 1 2
+
+q){x, sum -2#x}/[10;1 1] -- Iterate 10 times starting with 1 1 
+
+1 1 2 3 5 8 13 21 34 55 89 144
+
+```
+
+
+## Chapter 9. Functions Examples: Variables
+
+```haskell
+
+q)deltas 10 20 30 40 50 -- REturns the successive differences across a numeric list
+10 10 10 10 10 
 q)
 q)
 q)
