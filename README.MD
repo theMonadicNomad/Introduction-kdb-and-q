@@ -95,7 +95,7 @@ q)42=6*7 -- Compare 2 values
 q)1 2 3=10 2 30 -- When you compare 2 lists, it compares individual elements in the two lists 
 010b --False True False
 
-q)1 2 3=1`0 20 3 40 --Compare 2 lists of not of equal length.
+q)1 2 3=10 20 3 40 --Compare 2 lists of not of equal length.
 'length
   [0]  1 2 3=10 20 3 40 -- Error message
   
@@ -107,37 +107,120 @@ q)1 2 3=1`0 20 3 40 --Compare 2 lists of not of equal length.
 q)2018.01.01 -- A count of days since the millenium 
 2018.01.01
 
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
+
+--In Q, as long as things have compatible underlying values you can compare them 
+q)2000.01.01=0
+1b
+
+q)1999.12.31=-1
+1b
+
+--We can do arithmetic on days
+q)2000.01.01+31
+2000.02.01
+
+q)2000.02.01-2000.01.01
+31i
+
+q)2000.01m --January 2000
+2000.01m
+
+q)2000.02m=1
+1b
+
+q)1999.12m=-1
+1b
+
+q)2000.01.01=2000.01m
+1b
+
+```
+
+## 5.Casting and Date Operators
+
+
+--Casting: Convert a value of one type to another type
+``` haskell
+q)`long$1.0 -- Cast the float 1.0 to long
+1
+
+q)`float$1 --Cast the integer to float
+1f
+
+q)`boolean$1
+1b
+
+q)`date$31
+2000.02.01
+
+q)2000.01m+til 3
+2000.01 2000.02 2000.03m
+
+```
+
+## 6.Operations on Lists
+
+```haskell
+
+--Declarative Programming: What you want, not how to do it.
+
+q)0 +/ 10 20 30 40 50 --Initialize to 0 and add across the list
+150
+
+-- / called as over Operator in Q, similar to Fold in Functional Programming.
+
+q)(+/) 10 20 30 40 50 --No need of initialization
+150
+
+q)(*/) 1 2 3 4 5 --Multiply across the list starting from the first number
+120
+
+q)(*/) 1+til 5
+120
+
+q)4|5 -- Returns the larger of the two numbers
+5
+
+q)10&2 --Returns the smaller of the two numbers
+2
+
+q)(|/) 10 30 20 50 40 --Returns the max of the list
+50
+
+q)(&/) 10 30 20 45 50 --Returns the min of the list
+10
+
+q)sum 10 30 20 50 40
+150
+
+q)min 10 30 20 50 40
+10
+
+q)max 10 30 20 50 40
+50 
+
+q)0b|1b
+1b
+
+q)(+/) 10 20 30 40 50
+150
+
+q)(+\) 10 20 30 40 50
+10 30 60 100 150 --Displays the intermediate results along with the final results
+
+
+q)(&\) 40 20 30 10 50
+40 20 20 10 10
+
+q)(|\) 40 20 30 10 50
+40 40 40 40 50
+
+q)sums 10 20 30 40 50 --Running sum
+10 30 60 100 150
+
+q)mins 10 20 30 40 50 --Running minimum
+10 10 10 10 10
+
 q)
 q)
 q)
