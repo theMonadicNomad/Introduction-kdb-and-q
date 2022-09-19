@@ -316,24 +316,50 @@ q)times:10000?24:00:00.000 -- Generate 10000 random times between 00:00:00 till 
 q)qtys: 100*1+10000?100
 
 q)ixs:10000?3 --Generate 10000 random numbers between 0-2
-q)syms: `aapl` 
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
-q)
+q)syms: `aapl `amzn `googl` ixs
+q)syms
+`googl `aapl `amzn `googl ..
+
+q)172.0 1189.0 1073.0 ixs
+1073 172 1189 1073 1073 1189 ..
+
+q)pxs:(1+10000?.03)*172.0 1189.0 1073.0 ixs
+q)pxs
+1080.679 172.5521 1211.08 1104.971 ..
+
+q)t:([] date:dates; time:times; sym:syms;qty:qtys;px:pxs) --Creating table from individual lists
+q)t
+2018.01.27 19:44:30.940 aapl 3000 176.5086
+2018.01.05 15:52:20.987 amzn 1200 1213.456
+..
+
+q)t:`date`time xasc t --Sort the table based on date and time
+q)2#t First 2 rows
+q)date          time        sym     qty     px
+--------------------------------------------------
+2018.01.01 00:00:01.129     aapl    8000    174.7627
+2018.01.01 00:00:03.396     amzn    8300    175.518
+
+```
+
+## Chapter 11. qSQL
+
+```haskell
+
+q)select date, time, sym, px from t
+
+q)select date,time,qty,px from t where sym=`aapl
+q)\t select date,time,qty,px from t where sym=`aapl -- Evaluate the query and return the time taken to execute
+
+q)first 10 20 30 40 50
+10
+
+q)last 10 20 30 40 50
+50
+
+q)5#select open:first px, close:last px by date,time from t where sym=`aapl
+q)5#select open:first px, close:last px, lo:min px, hi:max px by date,time from t where sym=`aapl
+
 q)
 q)
 q)
