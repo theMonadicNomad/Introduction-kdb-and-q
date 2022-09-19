@@ -360,9 +360,29 @@ q)last 10 20 30 40 50
 q)5#select open:first px, close:last px by date,time from t where sym=`aapl
 q)5#select open:first px, close:last px, lo:min px, hi:max px by date,time from t where sym=`aapl
 
-q)
-q)
-q)
+```
+
+## Chapter 12: Complex Queries(*)
+
+```haskell
+q)1 3 2 1 wavg 10 20 30 40 -- Compute the weighted average of the list on the right using the weights on the left
+20f
+
+q)5 xbar 0 12 3 4 5 10 11 21 --Largest multiple of 5 that does not exceed the number on the right
+0 0 0 0 0 5 10 10 20 
+
+q)select max px - mins px from t where sym=`aapl -- Maximizing the profit 
+px
+-------
+5.1599992
+
+```
+
+## Chapter 13: Introduction to IntraProcess Communication
+
+```haskell
+
+
 q)
 q)
 q)
