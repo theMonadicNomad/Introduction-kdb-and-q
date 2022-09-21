@@ -379,12 +379,63 @@ px
 ```
 
 ## Chapter 13: Introduction to IntraProcess Communication
+```
+q)\p 4242 -- Opening a port on server
 
-```haskell
+```
+
+| Server | Client |
+|-------| -------|
+| ``` q)\p 4242 ``` | q)```  h:hopen ::4242 ``` |
+| ``` q)cub3:{x*x*x} ``` | q)```  h "6*7" ``` |
+| ``` q) ``` | q)```  42 ``` |
+| ``` q)  ``` | q)```sq:{x*x} ``` |
+| ``` q) ``` | q)``` h (sq; 5) ``` |
+| ``` q) ``` | q)```25``` |
+| ``` q)cub3:{0N!x*x*x} ``` | q)``` h (`cub3; 5) ``` |
+| ``` q) 125 ``` | q)``` 125``` |
 
 
-q)
 
 
+
+ 
+
+## Chapter 14: Callbacks
+
+
+## Chapter 15: I/O
+
+```haskell 
+ -- Strings in Q are a list of character data
+ 
+ q)"a"
+ "a"
+ q)count "jab" -- Three characters in a list
+ 3
+ q)count `jab --Its an atom and a single entity.
+ 1
+ 
+ --Text data has zero in the name.
+ -- In Q, a file is record of texts whereas in memory it is called as list of strings 
+ q)("So long"; "and thanks"; "for all the fish") -- Paranthesis: A general list of non-homoegeneous items
+ 
+ --Name of the file `:
+ --0: Name of the function that writes text to a file
+ 
+q)`:/data/solong.txt 0:("So long"; "and thanks"; "for all the dish")
+
+q)`:/data/solong.txt -- Not an error message since it is a back tick. This is the file handle and success message
+
+--Read the file
+q)read0 `:/data/solong.txt
+"So long"
+"and thanks"
+"for all the dish"
+
+--Write a program that reads the text file and concatenates to the back of the same file 
+
+q)`:/data/answer.text 0: txt,txt:read0 `:/data/solong.txt
+`:/data/answer.txt
 
 ```
